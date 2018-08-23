@@ -1,2 +1,2 @@
 # AmazingHiring
-Test for AmazingHiring
+Test for AmazingHiring with using React + Redux
