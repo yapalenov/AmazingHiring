@@ -22,12 +22,13 @@ thead tr:last-of-type {
 
 th div {
   width: 8px;
-  height: 8px;
+  height: 8px; 
   background-position: center;
   background-size: 8px;
   background-image: url('../../assets/not-active-arrow.png');
   position: absolute;
   right: 10px;
+  pointer-events: none;
 }
 
 th .arrow-top {
