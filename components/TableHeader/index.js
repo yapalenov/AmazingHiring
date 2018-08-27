@@ -6,31 +6,33 @@ import {changeSort} from '../../actions';
 
 class TableHeader extends Component {
 
-  initHeader() {
-    return Object.keys(this.props.initialStructure[0]).map((prop) => {
-
-      let className = '';
-      className = (this.props.sortType.name && prop == this.props.sortType.name)
-                  ? (this.props.sortType.reverse ? 'reverse' : 'normal')
-                  : ''
-
-      return (<th className={className} onClick={(e)=>{this.props.changeSort(e.target.dataset.type)}} key={prop} data-type={prop}>
-                {prop}
-                <div className='arrow-top'></div>
-                <div className='arrow-bottom'></div>
-              </th>)
-    })
-  }
-
   render() {
-      return (
-        <thead>
-          <tr onClick={(e)=>{this.props.changeSort(null)}}><th>Сброс</th></tr>
-          <tr>
-            {this.initHeader()}
-          </tr>
-        </thead>
-      )
+
+    const { title } = this.props.sortType;
+    const reverse = this.props.sortType.reverse ? 'reverse' : 'normal';
+    const titles  = this.props.initialStructure[0];
+
+    let initHeader = () => {
+      return Object.keys(titles).map((item) => {
+
+        let className = (title == item) ? reverse : '';
+
+        return (<th className={className} onClick={(e)=>{this.props.changeSort(e.target.dataset.title)}} key={item} data-title={item}>
+                  {item}
+                  <div className='arrow-top'></div>
+                  <div className='arrow-bottom'></div>
+                </th>)
+      })
+    }
+
+    return (
+      <thead>
+        <tr onClick={(e)=>{this.props.changeSort(null)}}><th>Сброс</th></tr>
+        <tr>
+          {initHeader()}
+        </tr>
+      </thead>
+    )
   }
 }
 
