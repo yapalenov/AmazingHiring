@@ -7,9 +7,14 @@ export default function (state=initialState, action) {
   let newState = {};
   switch (action.type) {
     case 'CHANGE_SORT':
-      newState.title = action.payload
-      newState.reverse = state.title == action.payload ? !state.reverse : false;
-      newState.reverse = !state.title ? false : newState.reverse;
+      const title = action.payload;
+      const reverse = state.title === action.payload
+        ? !state.reverse
+        : false;
+      const newState = {
+        title,
+        reverse
+      }
       return newState;
       break;
     default:
